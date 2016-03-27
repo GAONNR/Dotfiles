@@ -183,6 +183,9 @@ if has('mac') || has('macunix')
         \ '<Plug>DashGlobalSearch'] }
 endif
 
+" Auto Complete
+Plug 'AutoComplPop'
+
 call plug#end()
 filetype plugin indent on
 syntax on
