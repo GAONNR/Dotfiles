@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/gaonnarae/Downloads/SECCON2015'
+let g:netrw_dirhist_2='/Users/gaonnarae/Documents/Github/GAONNR.github.io/_layouts'
+let g:netrw_dirhist_3='/Users/gaonnarae/Documents/Github/GAONNR.github.io/.git'
+let g:netrw_dirhist_4='/Users/gaonnarae/Documents/Github/GAONNR.github.io/_layouts'
+let g:netrw_dirhist_5='/Users/gaonnarae/.ssh'
