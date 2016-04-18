@@ -91,7 +91,7 @@ Plug 'tpope/vim-eunuch'
 " Produce increasing/decreasing columns of numbers, dates, or daynames
 Plug 'visincr'
 " Syntax checking plugin
-Plug 'scrooloose/syntastic'
+ Plug 'scrooloose/syntastic'
 " Switch between source files and header files
 Plug 'a.vim'
 " Automated tag file generation and syntax highlighting of tags
@@ -112,7 +112,7 @@ Plug 'scrooloose/nerdtree'
 " Source code browser
 Plug 'taglist.vim'
 " Show a git diff in the gutter and stages/reverts hunks
-Plug 'airblade/vim-gitgutter'
+ Plug 'airblade/vim-gitgutter'
 
 " ConqueTerm
 " Plug 'Conque-Shell'
@@ -184,7 +184,10 @@ if has('mac') || has('macunix')
 endif
 
 " Auto Complete
-Plug 'AutoComplPop'
+ Plug 'AutoComplPop'
+
+" Swift Syntax & Indent
+ Plug 'toyamarinyon/vim-swift'
 
 call plug#end()
 filetype plugin indent on
@@ -981,11 +984,11 @@ if has('mac') || has('macunix')
   nmap <Leader>d <Plug>DashSearch
 endif
 
+"wincmd w mapping
 map <C-w> :wincmd w<CR>
-" mapped window change
 
+"put cursor at the last changed line
 au BufReadPost *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
 \ exe "norm g`\"" |
 \ endif
-" put cursor to the last change
