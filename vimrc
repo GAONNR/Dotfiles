@@ -60,8 +60,8 @@ endfunction
 call s:DownloadVimPlug()
 
 " Colorscheme
-Plug 'yous/tomorrow-theme', { 'branch': 'revert-git-summary-bold',
-      \ 'rtp': 'vim' }
+" Plug 'yous/tomorrow-theme', { 'branch': 'revert-git-summary-bold',
+"      \ 'rtp': 'vim' }
 
 " General
 " Preserve missing EOL at the end of text files
@@ -202,7 +202,9 @@ augroup vimrc
 augroup END
 
 try
-  colorscheme Tomorrow-Night
+  set background=dark
+  colorscheme hybrid_material
+  " LuciusDark
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
 endtry
@@ -401,7 +403,7 @@ if has('gui_running')
   endfunction
   function! s:ScreenSave()
     " Save window size and position.
-    if has('gui_running') && g:screen_size_restore_pos
+    if hs('gui_running') && g:screen_size_restore_pos
       let vim_instance =
             \ (g:screen_size_by_vim_instance == 1 ? (v:servername) : 'GVIM')
       let data = vim_instance.' '.&columns.' '.&lines.' '.
@@ -992,3 +994,24 @@ au BufReadPost *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
 \ exe "norm g`\"" |
 \ endif
+
+" Plug 'yous/vim-open-color'
+
+" Use 24-bit (true-color) mode in Vim/Neovim when outside tmux or screen.
+" " If you're using tmux version 2.2 or later, you can remove the outermost $TMUX
+" " check and use tmux's 24-bit color support
+" " (<http://sunaku.github.io/tmux-24bit-color.html#usage> for more information.)
+if empty($TMUX) && empty($STY)
+  if has('nvim')
+    "For Neovim 0.1.3 and 0.1.4 <https://github.com/neovim/neovim/pull/2198>
+    let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+  endif
+  " For Neovim > 0.1.5 and Vim > patch 7.4.1799
+  " <https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162>
+  " Based on Vim patch 7.4.1770 (`guicolors` option)
+  " <https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd>
+  " <https://github.com/neovim/neovim/wiki/Following-HEAD#20160511>
+  if has('termguicolors')
+    set termguicolors
+  endif
+endif
